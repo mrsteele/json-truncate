@@ -28,7 +28,7 @@ const truncate = (obj, maxDepth, curDepth) => {
 
 module.exports = (obj, maxDepth) => {
   try {
-    return JSON.stringify(truncate(obj, maxDepth || 10));
+    return truncate(obj, maxDepth || 10);
   } catch (e) {
     console.log(e);
     return {};

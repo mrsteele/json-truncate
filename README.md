@@ -23,7 +23,7 @@ You will get a proper truncated object that can now be written to a file if need
 #### Arguments
 
 * `obj` - The Object that will be truncated.
-* `maxDepth` - The depth at which to stop building the valid json.
+* `maxDepth` - (optional) The depth at which to stop building the valid json. Defaults to `10`.
 
 
 
