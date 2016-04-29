@@ -1,4 +1,4 @@
-# json-truncate [![NPM version](https://badge.fury.io/js/json-truncate.svg)](http://badge.fury.io/js/json-truncate) [![Dependency Status](https://gemnasium.com/mrsteele/json-truncate.svg)](https://gemnasium.com/mrsteele/json-truncate)
+# json-truncate [![NPM version](https://badge.fury.io/js/json-truncate.svg)](http://badge.fury.io/js/json-truncate)
 
 A way to truncate a json object. Useful for circular referenced objects.
 
