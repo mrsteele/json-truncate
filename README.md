@@ -4,6 +4,7 @@ A way to truncate a json object. Useful for circular referenced objects.
 
 ## Status
 
+[![travis](https://travis-ci.org/mrsteele/json-truncate.svg?branch=master)](https://travis-ci.org/mrsteele/json-truncate)
 [![dependencies](https://david-dm.org/mrsteele/json-truncate.svg)](#)
 [![npm](https://img.shields.io/npm/v/json-truncate.svg?maxAge=0&style=flat)](https://www.npmjs.com/package/json-truncate)
 [![GitHub commits](https://img.shields.io/github/commits-since/mrsteele/json-truncate/v1.1.0.svg?maxAge=0&style=flat)](https://github.com/mrsteele/json-truncate/commits/master)
