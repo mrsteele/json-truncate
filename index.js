@@ -2,15 +2,16 @@
 
 const _ = require('lodash');
 
+const flatTypes = ["string", "number", "boolean"];
 const truncate = (obj, maxDepth, curDepth) => {
   curDepth = curDepth || 0;
   
   if (curDepth < maxDepth) {
     const newDepth = curDepth + 1;
     
-    if (_.isString(obj) || _.isNumber(obj) || _.isBoolean(obj)) {
+    if (flatTypes.indexOf(typeof(obj)) !== -1) {
       return obj;
-    } else if (_.isArray(obj)) {
+    } else if (Array.isArray(obj)) {
       let newObj = [];
       obj.map(value => {
         newObj.push(truncate(value, maxDepth, newDepth));
