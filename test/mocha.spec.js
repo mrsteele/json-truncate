@@ -35,7 +35,6 @@ var createDeep = function(levels) {
         }
     }
 
-    //refobj.sub = undefined;
     return rootobj;
 };
 
