@@ -6,7 +6,7 @@
   "scripts": {
     "commit": "./node_modules/.bin/git-cz",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "npm test && semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
