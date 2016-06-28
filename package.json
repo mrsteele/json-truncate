@@ -14,6 +14,11 @@
     "json",
     "depth",
     "truncate",
+    "shorten",
+    "limit",
+    "trim",
+    "prune",
+    "crop",
     "stringify",
     "parse",
     "javascript",
@@ -25,7 +30,7 @@
     "url": "https://github.com/mrsteele/json-truncate/issues"
   },
   "homepage": "https://github.com/mrsteele/json-truncate#readme",
-  "dependencies": {
+  "devDependencies": {
     "chai": "^3.5.0",
     "istanbul": "^0.4.4",
     "mocha": "^2.5.3"

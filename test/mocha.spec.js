@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // Tests suite
 const chai = require('chai');
