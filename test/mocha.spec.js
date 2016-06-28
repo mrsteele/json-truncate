@@ -11,7 +11,7 @@ JSON.truncate = require('../');
 // Helper
 const createDeep = function(levels) {
 
-    const createALevel = (obj, level) => {
+    const createALevel = function(obj, level) {
         obj.bool = true;
         obj.num = 10;
         obj.str = `You are on level ${level}`;
