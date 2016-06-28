@@ -14,7 +14,7 @@ var createDeep = function(levels) {
     var createALevel = function(obj, level) {
         obj.bool = true;
         obj.num = 10;
-        obj.str = `You are on level ${level}`;
+        obj.str = 'You are on level ' + level;
         obj.arr = [true, 1, 'hi'];
         obj.sub = {};
         return obj;
