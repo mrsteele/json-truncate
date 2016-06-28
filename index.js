@@ -38,10 +38,5 @@ var truncate = function(obj, maxDepth, curDepth) {
 }
 
 module.exports = function(obj, maxDepth) {
-    try {
-        return truncate(obj, maxDepth || 10);
-    } catch (e) {
-        console.log(e);
-        return {};
-    }
+    return truncate(obj, maxDepth || 10);
 };
