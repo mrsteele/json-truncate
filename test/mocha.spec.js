@@ -9,7 +9,7 @@ const expect = chai.expect;
 JSON.truncate = require('../');
 
 // Helper
-const createDeep = levels => {
+const createDeep = function(levels) {
 
     const createALevel = (obj, level) => {
         obj.bool = true;
