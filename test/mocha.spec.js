@@ -1,17 +1,17 @@
 'use strict';
 
 // Tests suite
-const chai = require('chai');
+var chai = require('chai');
 chai.should();
-const expect = chai.expect;
+var expect = chai.expect;
 
 // The star of the show
 JSON.truncate = require('../');
 
 // Helper
-const createDeep = function(levels) {
+var createDeep = function(levels) {
 
-    const createALevel = function(obj, level) {
+    var createALevel = function(obj, level) {
         obj.bool = true;
         obj.num = 10;
         obj.str = `You are on level ${level}`;
@@ -20,10 +20,10 @@ const createDeep = function(levels) {
         return obj;
     };
 
-    let rootobj = {};
-    let levelsCopy = levels;
+    var rootobj = {};
+    var levelsCopy = levels;
 
-    let refobj = rootobj;
+    var refobj = rootobj;
     while (levelsCopy > 0) {
         levelsCopy--;
         createALevel(refobj, levels - levelsCopy);
@@ -71,7 +71,7 @@ describe('JSONtruncate', function() {
       
         it('should resolve recursive objects', function() {
             // setting up a recursive object
-            const recursive = {
+            var recursive = {
               test: true
             };
             Object.defineProperty(recursive, 'sub', {
