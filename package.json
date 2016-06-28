@@ -1,14 +1,16 @@
 {
   "name": "json-truncate",
-  "version": "1.1.0",
+  "version": "0.0.0-semantically-released",
   "description": "A way to truncate a json object.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
+    "commit": "./node_modules/.bin/git-cz",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrsteele/json-truncate.git"
+    "url": "https://github.com/mrsteele/json-truncate.git"
   },
   "keywords": [
     "json",
@@ -32,7 +34,15 @@
   "homepage": "https://github.com/mrsteele/json-truncate#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "commitizen": "^2.8.2",
+    "cz-conventional-changelog": "^1.1.6",
     "istanbul": "^0.4.4",
-    "mocha": "^2.5.3"
+    "mocha": "^2.5.3",
+    "semantic-release": "^4.3.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
