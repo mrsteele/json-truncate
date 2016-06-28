@@ -1,11 +1,11 @@
 'use strict';
 
 const flatTypes = ["string", "number", "boolean"];
-const isFlat = val => {
+const isFlat = function(val) {
     return flatTypes.indexOf(typeof(val)) !== -1;
 }
 
-const truncate = (obj, maxDepth, curDepth) => {
+const truncate = function(obj, maxDepth, curDepth) {
     curDepth = curDepth || 0;
 
     if (curDepth < maxDepth) {
@@ -15,7 +15,7 @@ const truncate = (obj, maxDepth, curDepth) => {
             return obj;
         } else if (Array.isArray(obj)) {
             let newObj = [];
-            obj.map(value => {
+            obj.map(function(value) {
                 if (isFlat(value)) {
                     newObj.push(value);
                 } else {
@@ -37,7 +37,7 @@ const truncate = (obj, maxDepth, curDepth) => {
     }
 }
 
-module.exports = (obj, maxDepth) => {
+module.exports = function(obj, maxDepth) {
     try {
         return truncate(obj, maxDepth || 10);
     } catch (e) {
