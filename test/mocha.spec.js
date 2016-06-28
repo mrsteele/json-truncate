@@ -39,15 +39,15 @@ const createDeep = function(levels) {
     return rootobj;
 };
 
-describe('JSONtruncate', () => {
+describe('JSONtruncate', function() {
 
-    describe('defaults', () => {
+    describe('defaults', function() {
 
-        it('should truncate to 1', () => {
+        it('should truncate to 1', function() {
             JSON.truncate(createDeep(3), 1).should.deep.equal(createDeep(1));
         });
 
-        it('should truncate to default (10)', () => {
+        it('should truncate to default (10)', function() {
             JSON.truncate(createDeep(15)).should.deep.equal(createDeep(10));
         });
 
@@ -55,21 +55,21 @@ describe('JSONtruncate', () => {
             JSON.truncate([createDeep(3)], 2).should.deep.equal([createDeep(1)]);
         });
 
-        it('should return flat objects', () => {
-            [5, true, false, "hello"].map(val => {
+        it('should return flat objects', function() {
+            [5, true, false, "hello"].map(function(val) {
               JSON.truncate(val, 5).should.equal(val);
             });
         });
       
-        it('should return an empty with anything not jsonable', () => {
+        it('should return an empty with anything not jsonable', function() {
           JSON.truncate(function(){}, 5).should.deep.equal({});
         });
       
-        it('should return an empty object with a bad maxDepth value', () => {
+        it('should return an empty object with a bad maxDepth value', function() {
           expect(JSON.truncate({test: true}, {bad:true})).to.be.undefied;
         });
       
-        it('should resolve recursive objects', () => {
+        it('should resolve recursive objects', function() {
             // setting up a recursive object
             const recursive = {
               test: true
