@@ -51,7 +51,7 @@ describe('JSONtruncate', function() {
             JSON.truncate(createDeep(15)).should.deep.equal(createDeep(10));
         });
 
-        it('should truncate arrays and nested objects', () => {
+        it('should truncate arrays and nested objects', function() {
             JSON.truncate([createDeep(3)], 2).should.deep.equal([createDeep(1)]);
         });
 
