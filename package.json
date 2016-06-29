@@ -6,6 +6,7 @@
   "scripts": {
     "commit": "./node_modules/.bin/git-cz",
     "check-coverage": "./node_modules/.bin/istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha && npm run check-coverage",
     "semantic-release": "npm test && ./node_modules/.bin/semantic-release pre && npm publish && ./node_modules/.bin/semantic-release post"
   },
@@ -36,9 +37,11 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "commitizen": "^2.8.2",
+    "coveralls": "^2.11.9",
     "cz-conventional-changelog": "^1.1.6",
     "istanbul": "^0.4.4",
     "mocha": "^2.5.3",
+    "mocha-lcov-reporter": "^1.2.0",
     "semantic-release": "^4.3.5"
   },
   "config": {
