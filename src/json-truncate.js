@@ -6,8 +6,13 @@ const isFlat = val => {
   return flatTypes.indexOf(typeof val) !== -1
 }
 
+const isDefined = val => {
+  return val !== null && val !== undefined
+}
+
 const truncate = (obj, maxDepth, curDepth) => {
   curDepth = curDepth || 0
+  maxDepth = (isDefined(maxDepth)) ? maxDepth : 10
 
   if (curDepth < maxDepth) {
     const newDepth = curDepth + 1

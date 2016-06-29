@@ -11,6 +11,4 @@ try {
   }
 }
 
-module.exports = function (obj, maxDepth) {
-  return JSONTruncate(obj, maxDepth || 10)
-}
+module.exports = JSONTruncate

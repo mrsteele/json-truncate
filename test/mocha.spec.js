@@ -8,7 +8,7 @@ chai.should()
 var expect = chai.expect
 
 // The star of the show
-JSON.truncate = require('../')
+JSON.truncate = require('../src/json-truncate')
 
 // Helper
 var createDeep = function (levels) {

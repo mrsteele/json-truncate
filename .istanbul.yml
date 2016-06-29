@@ -1,5 +1,5 @@
 instrumentation:
-  root: dist
+  root: src
 check:
   global:
     statements: 100
