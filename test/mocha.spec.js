@@ -7,8 +7,9 @@ var chai = require('chai')
 chai.should()
 var expect = chai.expect
 
-// The star of the show
-JSON.truncate = require('../src/json-truncate')
+// The stars of the show
+var src = require('../src/json-truncate')
+var dist = require('../dist/json-truncate')
 
 // Helper
 var createDeep = function (levels) {
@@ -40,31 +41,36 @@ var createDeep = function (levels) {
 }
 
 describe('JSONtruncate', function () {
-  describe('defaults', function () {
+  createTestsFor(src, 'source')
+  createTestsFor(dist, 'distributed')
+})
+
+function createTestsFor (m, name) {
+  describe(name, function () {
     it('should truncate to 1', function () {
-      JSON.truncate(createDeep(3), 1).should.deep.equal(createDeep(1))
+      m(createDeep(3), 1).should.deep.equal(createDeep(1))
     })
 
     it('should truncate to default (10)', function () {
-      JSON.truncate(createDeep(15)).should.deep.equal(createDeep(10))
+      m(createDeep(15)).should.deep.equal(createDeep(10))
     })
 
     it('should truncate arrays and nested objects', function () {
-      JSON.truncate([createDeep(3)], 2).should.deep.equal([createDeep(1)])
+      m([createDeep(3)], 2).should.deep.equal([createDeep(1)])
     })
 
     it('should return flat objects', function () {
       ;[5, true, false, 'hello'].map(function (val) {
-        JSON.truncate(val, 5).should.equal(val)
+        m(val, 5).should.equal(val)
       })
     })
 
     it('should return an empty with anything not jsonable', function () {
-      JSON.truncate(function () {}, 5).should.deep.equal({})
+      m(function () {}, 5).should.deep.equal({})
     })
 
     it('should return an empty object with a bad maxDepth value', function () {
-      expect(JSON.truncate({
+      expect(m({
         test: true
       }, {
         bad: true
@@ -81,7 +87,7 @@ describe('JSONtruncate', function () {
         enumerable: true
       })
 
-      JSON.truncate(recursive, 2).should.deep.equal({
+      m(recursive, 2).should.deep.equal({
         test: true,
         sub: {
           test: true,
@@ -90,4 +96,4 @@ describe('JSONtruncate', function () {
       })
     })
   })
-})
+}
