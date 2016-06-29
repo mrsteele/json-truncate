@@ -90,5 +90,4 @@ describe('JSONtruncate', function () {
       })
     })
   })
-
 })
