@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "commit": "./node_modules/.bin/git-cz",
-    "check-coverage": "./node_modules/.bin/istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "pretest": "standard *.js && standard **/*.js",
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha && npm run check-coverage",
-    "semantic-release": "npm test && ./node_modules/.bin/semantic-release pre && npm publish && ./node_modules/.bin/semantic-release post"
+    "check-coverage": "istanbul check-coverage",
+    "coveralls": "istanbul cover -x '**index.js**' _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls.js && rm -rf ./coverage",
+    "pretest": "standard src/**/*.js && standard test/**/*.js",
+    "build": "babel --out-dir dist src",
+    "help": "istanbul help config",
+    "test": "istanbul cover _mocha && npm run check-coverage",
+    "semantic-release": "npm test && semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
   },
   "homepage": "https://github.com/mrsteele/json-truncate#readme",
   "devDependencies": {
+    "babel-cli": "^6.10.1",
     "babel-eslint": "^6.1.0",
     "chai": "^3.5.0",
     "commitizen": "^2.8.2",
