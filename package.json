@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "commit": "./node_modules/.bin/git-cz",
-    "pretest": "standard src/**/*.js && standard test/**/*.js",
-    "test": "istanbul cover _mocha",
-    "posttest": "istanbul check-coverage",
+    "standard": "standard src/**/*.js && standard test/**/*.js",
+    "cover": "nyc npm t && npm check-coverage",
+    "check-coverage": "nyc check-coverage",
+    "test": "_mocha test/**/*.js --compilers js:babel-register",
     "prebuild": "rimraf dist",
     "build": "babel --copy-files --out-dir dist src",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls.js && rm -rf ./coverage",
+    "coveralls": "nyc cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls.js && rm -rf ./coverage",
     "semantic-release": "npm test && semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -41,13 +42,14 @@
     "babel-cli": "^6.10.1",
     "babel-eslint": "^6.1.0",
     "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
     "chai": "^3.5.0",
     "commitizen": "^2.8.2",
     "coveralls": "^2.11.9",
     "cz-conventional-changelog": "^1.1.6",
-    "istanbul": "^0.4.4",
     "mocha": "^2.5.3",
     "mocha-lcov-reporter": "^1.2.0",
+    "nyc": "^6.6.1",
     "rimraf": "^2.5.2",
     "semantic-release": "^4.3.5",
     "standard": "^7.1.2"
