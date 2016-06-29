@@ -47,10 +47,10 @@ describe('JSONtruncate', function () {
 
 function createTestsFor (m, name) {
   describe(name, function () {
-//    it('should truncate to 1', function () {
-//      m(createDeep(3), 1).should.deep.equal(createDeep(1))
-//    })
-//
+    it('should truncate to 1', function () {
+      m(createDeep(3), 1).should.deep.equal(createDeep(1))
+    })
+
 //    it('should truncate to default (10)', function () {
 //      m(createDeep(15)).should.deep.equal(createDeep(10))
 //    })
