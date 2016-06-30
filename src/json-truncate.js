@@ -31,7 +31,7 @@ const truncate = (obj, maxDepth, curDepth) => {
       return newArr
     } else {
       const newObj = {}
-      for (var key in obj) {
+      for (let key in obj) {
         if (isFlat(obj[key])) {
           newObj[key] = obj[key]
         } else {
