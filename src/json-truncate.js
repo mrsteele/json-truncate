@@ -1,9 +1,9 @@
 'use strict'
 
-const flatTypes = ['string', 'number', 'boolean']
+const flatTypes = [String, Number, Boolean]
 
 const isFlat = val => {
-  return flatTypes.indexOf(typeof val) !== -1
+  return flatTypes.indexOf(val.constructor) !== -1
 }
 
 const isDefined = val => {
