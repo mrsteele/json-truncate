@@ -46,19 +46,19 @@ const createTestsFor = (m, name) => {
       m(createDeep(3), 1).should.deep.equal(createDeep(1))
     })
 
-    it('should truncate to default (10)', () => {
-      m(createDeep(15)).should.deep.equal(createDeep(10))
-    })
-
-    it('should truncate arrays and nested objects', () => {
-      m([createDeep(3)], 2).should.deep.equal([createDeep(1)])
-    })
-//
-//    it('should return flat objects', () => {
-//      ;[5, true, false, 'hello'].map(val => {
-//        m(val, 5).should.equal(val)
-//      })
+//    it('should truncate to default (10)', () => {
+//      m(createDeep(15)).should.deep.equal(createDeep(10))
 //    })
+//
+//    it('should truncate arrays and nested objects', () => {
+//      m([createDeep(3)], 2).should.deep.equal([createDeep(1)])
+//    })
+//
+    it('should return flat objects', () => {
+      ;[5, true, false, 'hello'].map(val => {
+        m(val, 5).should.equal(val)
+      })
+    })
 //
 //    it('should return an empty with anything not jsonable', () => {
 //      m(() => {}, 5).should.deep.equal({})
