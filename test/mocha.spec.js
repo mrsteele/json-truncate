@@ -3,7 +3,7 @@
 'use strict'
 
 // Tests suite
-import chai from 'chai';
+import chai from 'chai'
 const expect = chai.expect
 chai.should()
 
