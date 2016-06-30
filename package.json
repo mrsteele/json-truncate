@@ -7,7 +7,7 @@
     "commit": "./node_modules/.bin/git-cz",
     "standard": "standard src/**/*.js && standard test/**/*.js",
     "cover": "nyc npm t && npm run coverage-report",
-    "coverage-check": "nyc check-coverage",
+    "coverage-check": "nyc check-coverage --functions 100 --branches 100 --statements 100 --lines 100",
     "coverage-report": "nyc report --reporter=lcov",
     "test": "_mocha --compilers js:babel-register",
     "prebuild": "rimraf dist",
