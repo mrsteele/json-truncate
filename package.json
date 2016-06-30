@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "commit": "./node_modules/.bin/git-cz",
-    "check-coverage": "./node_modules/.bin/istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "pretest": "standard *.js && standard **/*.js",
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha && npm run check-coverage",
-    "semantic-release": "npm test && ./node_modules/.bin/semantic-release pre && npm publish && ./node_modules/.bin/semantic-release post"
+    "standard": "standard src/**/*.js && standard test/**/*.js",
+    "cover": "nyc npm t && npm run coverage-check",
+    "coverage-check": "nyc check-coverage --branches 100 --statements 100 --functions 100 --lines 100",
+    "coverage-report": "nyc report --reporter=lcov",
+    "test": "_mocha --compilers js:babel-register",
+    "prebuild": "rimraf dist",
+    "build": "babel --copy-files --out-dir dist src",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "semantic-release": "npm test && semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
@@ -36,17 +40,25 @@
   },
   "homepage": "https://github.com/mrsteele/json-truncate#readme",
   "devDependencies": {
+    "babel-cli": "^6.10.1",
     "babel-eslint": "^6.1.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
     "chai": "^3.5.0",
     "commitizen": "^2.8.2",
     "coveralls": "^2.11.9",
     "cz-conventional-changelog": "^1.1.6",
-    "istanbul": "^0.4.4",
     "mocha": "^2.5.3",
     "mocha-lcov-reporter": "^1.2.0",
+    "nyc": "^6.6.1",
+    "rimraf": "^2.5.2",
     "semantic-release": "^4.3.5",
     "standard": "^7.1.2"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
@@ -54,5 +66,14 @@
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "babel": {
+    "presets": "es2015"
+  },
+  "nyc": {
+    "exclude": [
+      "dist/json-truncate.js",
+      "test"
+    ]
   }
 }
