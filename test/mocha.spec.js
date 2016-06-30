@@ -4,7 +4,7 @@
 
 // Tests suite
 import chai from 'chai'
-const expect = chai.expect
+// const expect = chai.expect
 chai.should()
 
 // The stars of the show
