@@ -3,13 +3,13 @@
 'use strict'
 
 // Tests suite
-const chai = require('chai')
+import chai from 'chai'
 const expect = chai.expect
 chai.should()
 
 // The stars of the show
-const src = require('../src/json-truncate')
-const dist = require('../dist/json-truncate')
+import src from '../src/json-truncate'
+import dist from '../dist/json-truncate'
 
 // Helper
 const createDeep = levels => {

@@ -43,4 +43,4 @@ const truncate = (obj, maxDepth, curDepth) => {
   }
 }
 
-module.exports = truncate
+export default truncate

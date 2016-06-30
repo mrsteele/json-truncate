@@ -11,4 +11,4 @@ try {
   }
 }
 
-module.exports = JSONTruncate
+export default JSONTruncate
