@@ -1,4 +1,6 @@
-var JSONTruncate
+'use strict'
+
+let JSONTruncate
 try {
   JSONTruncate = require('./dist/json-truncate')
 } catch (err) {
@@ -11,4 +13,4 @@ try {
   }
 }
 
-export default JSONTruncate
+module.exports = JSONTruncate

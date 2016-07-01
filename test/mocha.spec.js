@@ -10,6 +10,7 @@ chai.should()
 // The stars of the show
 import src from '../src/json-truncate'
 import dist from '../dist/json-truncate'
+const entry = require('../')
 
 // Helper
 const createDeep = levels => {
@@ -92,6 +93,12 @@ const createTestsFor = (m, name) => {
     })
   })
 }
+
+describe('entry', () => {
+  it('should load either the source or the dist', () => {
+    entry.default.should.be.oneOf([src, dist])
+  })
+})
 
 describe('JSONtruncate', () => {
   createTestsFor(src, 'source')
