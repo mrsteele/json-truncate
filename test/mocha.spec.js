@@ -96,7 +96,7 @@ const createTestsFor = (m, name) => {
 
 describe('entry', () => {
   it('should load either the source or the dist', () => {
-    entry.default.should.be.oneOf([src, dist])
+    entry.should.be.oneOf([src, dist])
   })
 })
 

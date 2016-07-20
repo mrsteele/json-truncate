@@ -2,11 +2,11 @@
 
 let JSONTruncate
 try {
-  JSONTruncate = require('./dist/json-truncate')
+  JSONTruncate = require('./dist/json-truncate').default
 } catch (err) {
   if (err.code === 'MODULE_NOT_FOUND') {
     require('babel-register')
-    JSONTruncate = require('./src/json-truncate')
+    JSONTruncate = require('./src/json-truncate').default
   } else {
     console.log(err)
     process.exit(1)
