@@ -20,6 +20,8 @@ const createDeep = levels => {
     obj.str = 'You are on level ' + level
     obj.arr = [true, 1, 'hi']
     obj.sub = {}
+    obj.null = null
+    obj.undefined = undefined
     return obj
   }
 

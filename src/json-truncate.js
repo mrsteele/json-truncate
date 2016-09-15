@@ -2,12 +2,12 @@
 
 const flatTypes = [String, Number, Boolean]
 
-const isFlat = val => {
-  return flatTypes.indexOf(val.constructor) !== -1
-}
-
 const isDefined = val => {
   return val !== null && val !== undefined
+}
+
+const isFlat = val => {
+  return !isDefined(val) || flatTypes.indexOf(val.constructor) !== -1
 }
 
 const truncate = (obj, maxDepth, curDepth) => {
