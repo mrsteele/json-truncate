@@ -40,6 +40,12 @@ You will get a proper truncated object that can now be written to a file if need
 
 * `obj` - The Object that will be truncated.
 * `maxDepth` - (optional) The depth at which to stop building the valid json. Defaults to `10`.
+* `options` - (optional) An option object to customize the behavior of the utility. Defaults to `{}`.
+
+**Current Option Properties**
+|Option|Description|
+|:--|:--|
+|**replace**|A string value that is used to replace all truncated values. If this value is not a string then all truncated values will be replaced with `undefined`|
 
 
 ## Licence
