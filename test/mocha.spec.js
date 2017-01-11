@@ -58,12 +58,12 @@ const createTestsFor = (m, name) => {
     })
 
     it('should truncate arrays and nested objects with replacement string', () => {
-      const replacement = '[replaced]';
+      const replacement = '[replaced]'
       m([createDeep(3, replacement)], 2, {replace: replacement}).should.deep.equal([createDeep(1, replacement)])
     })
 
     it('should replace truncated values with undefined when replace prop is not a string', () => {
-      const replacement = 3;
+      const replacement = 3
       m([createDeep(3)], 2, {replace: replacement}).should.deep.equal([createDeep(1)])
     })
 
