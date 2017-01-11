@@ -26,6 +26,10 @@ npm install json-truncate --save
 JSON.truncate = require('json-truncate');
 
 console.log(JSON.truncate(SomeDeepObject, 10));
+
+//OR
+
+console.log(JSON.truncate(SomeDeepObject, 10, {truncatedValue: '[Truncated]'}));
 ```
 
 ## Returns
