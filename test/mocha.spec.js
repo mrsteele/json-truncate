@@ -13,7 +13,7 @@ import dist from '../dist/json-truncate'
 const entry = require('../')
 
 // Helper
-const createDeep = levels => {
+const createDeep = (levels, replace) => {
   const createALevel = (obj, level) => {
     obj.bool = true
     obj.num = 10
@@ -35,8 +35,8 @@ const createDeep = levels => {
     if (levelsCopy > 0) {
       refobj = refobj.sub
     } else {
-      refobj.sub = undefined
-      refobj.arr = undefined
+      refobj.sub = replace
+      refobj.arr = replace
     }
   }
 
@@ -55,6 +55,11 @@ const createTestsFor = (m, name) => {
 
     it('should truncate arrays and nested objects', () => {
       m([createDeep(3)], 2).should.deep.equal([createDeep(1)])
+    })
+
+    it('should truncate arrays and nested objects with replacement string', () => {
+      const replacement = '[replaced]';
+      m([createDeep(3, replacement)], 2, {replace: replacement}).should.deep.equal([createDeep(1, replacement)])
     })
 
     it('should return flat objects', () => {
