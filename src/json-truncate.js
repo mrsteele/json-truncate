@@ -42,7 +42,7 @@ const truncate = (obj, maxDepth, options, curDepth) => {
       return newObj
     }
   }
-  return options.truncatedValue;
+  return options.replace;
 }
 
 export default truncate

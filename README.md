@@ -29,7 +29,7 @@ console.log(JSON.truncate(SomeDeepObject, 10));
 
 //OR
 
-console.log(JSON.truncate(SomeDeepObject, 10, {truncatedValue: '[Truncated]'}));
+console.log(JSON.truncate(SomeDeepObject, 10, {replace: '[Truncated]'}));
 ```
 
 ## Returns
