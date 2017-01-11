@@ -62,6 +62,11 @@ const createTestsFor = (m, name) => {
       m([createDeep(3, replacement)], 2, {replace: replacement}).should.deep.equal([createDeep(1, replacement)])
     })
 
+    it('should replace truncated values with undefined when replace prop is not a string', () => {
+      const replacement = 3;
+      m([createDeep(3)], 2, {replace: replacement}).should.deep.equal([createDeep(1)])
+    })
+
     it('should return flat objects', () => {
       ;[5, true, false, 'hello'].map(val => {
         m(val, 5).should.equal(val)

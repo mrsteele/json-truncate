@@ -14,6 +14,7 @@ const truncate = (obj, maxDepth, options, curDepth) => {
   curDepth = curDepth || 0
   maxDepth = (isDefined(maxDepth)) ? maxDepth : 10
   options = (typeof options === 'object') ? options : {}
+  options.replace = (typeof options.replace === 'string') ? options.replace : undefined
 
   if (curDepth < maxDepth) {
     const newDepth = curDepth + 1

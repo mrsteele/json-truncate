@@ -27,7 +27,7 @@ JSON.truncate = require('json-truncate');
 
 console.log(JSON.truncate(SomeDeepObject, 10));
 
-//OR
+//OR specify a replacement string for truncated values
 
 console.log(JSON.truncate(SomeDeepObject, 10, {replace: '[Truncated]'}));
 ```
