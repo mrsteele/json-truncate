@@ -17,6 +17,8 @@ before_script:
   - npm prune
 script:
   - npm run travis
+  - codecov
+  - codeclimate-test-reporter < coverage/lcov.info
 after_success:
   - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
   - python travis_after_all.py
