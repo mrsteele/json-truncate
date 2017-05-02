@@ -2,9 +2,7 @@
 
 import chai from 'chai'
 import src from '../src/json-truncate'
-import dist from '../dist/json-truncate'
 
-const entry = require('../')
 const expect = chai.expect
 chai.should()
 
@@ -39,76 +37,63 @@ const createDeep = (levels, replace) => {
   return rootobj
 }
 
-const createTestsFor = (m, name) => {
-  describe(name, () => {
-    it('should truncate to 1', () => {
-      m(createDeep(3), 1).should.deep.equal(createDeep(1))
-    })
-
-    it('should truncate to default (10)', () => {
-      m(createDeep(15)).should.deep.equal(createDeep(10))
-    })
-
-    it('should truncate arrays and nested objects', () => {
-      m([createDeep(3)], 2).should.deep.equal([createDeep(1)])
-    })
-
-    it('should truncate arrays and nested objects with replacement string', () => {
-      const replacement = '[replaced]'
-      m([createDeep(3, replacement)], 2, {replace: replacement}).should.deep.equal([createDeep(1, replacement)])
-    })
-
-    it('should replace truncated values with undefined when replace prop is not a string', () => {
-      const replacement = 3
-      m([createDeep(3)], 2, {replace: replacement}).should.deep.equal([createDeep(1)])
-    })
-
-    it('should return flat objects', () => {
-      ;[5, true, false, 'hello'].map(val => {
-        m(val, 5).should.equal(val)
-      })
-    })
-
-    it('should return an empty with anything not jsonable', () => {
-      m(() => {}, 5).should.deep.equal({})
-    })
-
-    it('should return an empty object with a bad maxDepth value', () => {
-      expect(m({
-        test: true
-      }, {
-        bad: true
-      })).to.be.undefied
-    })
-
-    it('should resolve recursive objects', () => {
-      // setting up a recursive object
-      const recursive = {
-        test: true
-      }
-      Object.defineProperty(recursive, 'sub', {
-        value: recursive,
-        enumerable: true
-      })
-
-      m(recursive, 2).should.deep.equal({
-        test: true,
-        sub: {
-          test: true,
-          sub: undefined
-        }
-      })
-    })
-  })
-}
-
-describe('entry', () => {
-  it('should load either the source or the dist', () => {
-    entry.should.be.oneOf([src, dist])
-  })
-})
-
 describe('JSONtruncate', () => {
-  createTestsFor(src, 'source')
-  createTestsFor(dist, 'distributed')
+  it('should truncate to 1', () => {
+    src(createDeep(3), 1).should.deep.equal(createDeep(1))
+  })
+
+  it('should truncate to default (10)', () => {
+    src(createDeep(15)).should.deep.equal(createDeep(10))
+  })
+
+  it('should truncate arrays and nested objects', () => {
+    src([createDeep(3)], 2).should.deep.equal([createDeep(1)])
+  })
+
+  it('should truncate arrays and nested objects with replacement string', () => {
+    const replacement = '[replaced]'
+    src([createDeep(3, replacement)], 2, {replace: replacement}).should.deep.equal([createDeep(1, replacement)])
+  })
+
+  it('should replace truncated values with undefined when replace prop is not a string', () => {
+    const replacement = 3
+    src([createDeep(3)], 2, {replace: replacement}).should.deep.equal([createDeep(1)])
+  })
+
+  it('should return flat objects', () => {
+    ;[5, true, false, 'hello'].map(val => {
+      src(val, 5).should.equal(val)
+    })
+  })
+
+  it('should return an empty with anything not jsonable', () => {
+    src(() => {}, 5).should.deep.equal({})
+  })
+
+  it('should return an empty object with a bad maxDepth value', () => {
+    expect(src({
+      test: true
+    }, {
+      bad: true
+    })).to.be.equal(undefined)
+  })
+
+  it('should resolve recursive objects', () => {
+    // setting up a recursive object
+    const recursive = {
+      test: true
+    }
+    Object.defineProperty(recursive, 'sub', {
+      value: recursive,
+      enumerable: true
+    })
+
+    src(recursive, 2).should.deep.equal({
+      test: true,
+      sub: {
+        test: true,
+        sub: undefined
+      }
+    })
+  })
 })

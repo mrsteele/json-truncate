@@ -2,7 +2,7 @@
   "name": "json-truncate",
   "version": "0.0.0-semantically-released",
   "description": "A way to truncate a json object.",
-  "main": "index.js",
+  "main": "dist/json-truncate.js",
   "scripts": {
     "precommit": "npm run lint && npm run cover && npm run coverage-check",
     "commit": "git-cz",
@@ -52,7 +52,6 @@
     "commitizen": "^2.8.2",
     "cz-conventional-changelog": "^2.0.0",
     "mocha": "^3.3.0",
-    "mocha-lcov-reporter": "^1.2.0",
     "nyc": "^10.3.0",
     "rimraf": "^2.5.2",
     "semantic-release": "^6.3.2",
