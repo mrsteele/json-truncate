@@ -1,5 +1,7 @@
 # json-truncate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mrsteele/json-truncate.svg)](https://greenkeeper.io/)
+
 A way to truncate a json object. Useful for circular referenced objects.
 
 ## Status
