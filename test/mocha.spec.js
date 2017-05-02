@@ -1,16 +1,12 @@
 /* global describe, it */
 
-'use strict'
-
-// Tests suite
 import chai from 'chai'
-const expect = chai.expect
-chai.should()
-
-// The stars of the show
 import src from '../src/json-truncate'
 import dist from '../dist/json-truncate'
+
 const entry = require('../')
+const expect = chai.expect
+chai.should()
 
 // Helper
 const createDeep = (levels, replace) => {
