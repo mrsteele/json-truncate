@@ -1,5 +1,4 @@
 /* global describe, it */
-
 import chai from 'chai'
 import src from '../src/json-truncate'
 
@@ -52,12 +51,12 @@ describe('JSONtruncate', () => {
 
   it('should truncate arrays and nested objects with replacement string', () => {
     const replacement = '[replaced]'
-    src([createDeep(3, replacement)], 2, {replace: replacement}).should.deep.equal([createDeep(1, replacement)])
+    src([createDeep(3, replacement)], {maxDepth: 2, replace: replacement}).should.deep.equal([createDeep(1, replacement)])
   })
 
   it('should replace truncated values with undefined when replace prop is not a string', () => {
     const replacement = 3
-    src([createDeep(3)], 2, {replace: replacement}).should.deep.equal([createDeep(1)])
+    src([createDeep(3)], {maxDepth: 2, replace: replacement}).should.deep.equal([createDeep(1, replacement)])
   })
 
   it('should return flat objects', () => {
@@ -74,7 +73,9 @@ describe('JSONtruncate', () => {
     expect(src({
       test: true
     }, {
-      bad: true
+      maxDepth: {
+        bad: true
+      }
     })).to.be.equal(undefined)
   })
 
@@ -95,5 +96,18 @@ describe('JSONtruncate', () => {
         sub: undefined
       }
     })
+  })
+
+  it('should be configurable globally', () => {
+    try {
+      const replacement = '[replaced]'
+      src.config({
+        maxDepth: 2,
+        replace: replacement
+      })
+      src([createDeep(3, replacement)]).should.deep.equal([createDeep(1, replacement)])
+    } finally {
+      src.reset()
+    }
   })
 })
