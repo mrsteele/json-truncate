@@ -22,30 +22,69 @@ npm install json-truncate --save
 
 ## Usage
 
+Below are examples of how to use `json-truncate`
+
 ```javascript
-// You can add this as a static function on JSON.
-JSON.truncate = require('json-truncate');
+JSON.truncate = require('json-truncate')
 
-console.log(JSON.truncate(SomeDeepObject, 10));
+// Figure 1.0 - A basic example with default options.
+console.log(JSON.truncate(SomeDeepObject))
 
-//OR specify a replacement string for truncated values
-
-console.log(JSON.truncate(SomeDeepObject, 10, {replace: '[Truncated]'}));
+// Figure 1.1 - An example of configurable options.
+console.log(JSON.truncate({
+  data: 'foo',
+  level1: {
+    data: 'bar',
+    level2: {
+      level3: {}
+    }
+  }
+}, {
+  maxDepth: 2,
+  replace: '[Truncated]'
+}))
+/**
+ * Output:
+{
+  "data": "foo",
+  "level1": {
+    "data": "bar",
+    "level2": "[Truncated]"
+  }
+}
+ **/
 ```
 
-## Returns
+### Configuration
 
-You will get a proper truncated object that can now be written to a file if needed.
+By default, there are two configurable variables to keep in mind when using `json-truncate`:
+
+1. `maxDepth (Number)` = `10`
+2. `replace (Any)` = `undefined`
+
+If you would you can configure these either individually with each request, or globally with the configuration function. The following example mimics figure 1.2 above.
+
+```javascript
+JSON.truncate = require('json-truncate')
+
+JSON.truncate.configure({
+  maxDepth: 2,
+  replace: '[Truncated]'
+})
+
+console.log(JSON.truncate(SomeDeepObject))
+```
 
 #### Arguments
 
 * `obj` - The Object that will be truncated.
-* `maxDepth` - (optional) The depth at which to stop building the valid json. Defaults to `10`.
 * `options` - (optional) An option object to customize the behavior of the utility. Defaults to `{}`.
 
 **Current Option Properties**
 
 |Option|Description|
+|:--|:--|
+|**maxDepth**|The default maxDepth to use for nested and deep properties on an object. Defaults to `10`|
 |:--|:--|
 |**replace**|A string value that is used to replace all truncated values. If this value is not a string then all truncated values will be replaced with `undefined`|
 

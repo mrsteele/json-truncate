@@ -11,17 +11,18 @@ const isFlat = val => !isDefined(val) || flatTypes.indexOf(val.constructor) !== 
 /**
  * Truncates variables.
  * @param {Object} obj - The object to truncate.
- * @param {Object=} options - Configurable options.
- * @param {Number=} [options.maxDepth=10] - The max depth to build.
- * @param {Object=} options.replace - What to replace the truncated reference to.
+ * @param {Object|Number} [options={}] - If a number, the maxDepth, otherwise configurable options.
+ * @param {Number} [options.maxDepth=10] - The max depth to build.
+ * @param {Object} [options.replace=] - What to replace the truncated reference to.
  * @param {Number} [curDepth=0] - The current depth (used for recursive requests).
  * @returns {Object} The truncated object.
  */
 const truncate = (obj, options = {}, curDepth = 0) => {
+  options = isNaN(options) ? options : {maxDepth: options}
   options.maxDepth = options.maxDepth || maxDepth
   options.replace = options.replace || replace
 
-  if (curDepth < options.max) {
+  if (curDepth < options.maxDepth) {
     const newDepth = curDepth + 1
 
     if (isFlat(obj)) {
@@ -54,11 +55,11 @@ const truncate = (obj, options = {}, curDepth = 0) => {
 
 /**
  * Configures globals and defaults.
- * @param {Object=} obj - The configuration.
+ * @param {Object} [obj={}] - The configuration.
  * @param {Number} obj.maxDepth - The default and global maxDepth for future truncations.
  * @param {} obj.replace - The default and global replacement value.
  */
-export const configure = (obj = {}) => {
+truncate.configure = (obj = {}) => {
   maxDepth = obj.maxDepth || maxDepth
   replace = obj.replace || replace
 }
