@@ -1,5 +1,5 @@
 // configurables
-let maxDepth = 10
+let maxDepth
 let replace
 
 const flatTypes = [String, Number, Boolean]
@@ -59,9 +59,19 @@ const truncate = (obj, options = {}, curDepth = 0) => {
  * @param {Number} obj.maxDepth - The default and global maxDepth for future truncations.
  * @param {} obj.replace - The default and global replacement value.
  */
-truncate.configure = (obj = {}) => {
+truncate.config = (obj = {}) => {
   maxDepth = obj.maxDepth || maxDepth
   replace = obj.replace || replace
 }
+
+/**
+ * Allows you to reset the variables (mainly for testing).
+ */
+truncate.reset = () => {
+  maxDepth = 10
+  replace = undefined
+}
+
+truncate.reset()
 
 export default truncate

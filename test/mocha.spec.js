@@ -97,4 +97,17 @@ describe('JSONtruncate', () => {
       }
     })
   })
+
+  it('should be configurable globally', () => {
+    try {
+      const replacement = '[replaced]'
+      src.config({
+        maxDepth: 2,
+        replace: replacement
+      })
+      src([createDeep(3, replacement)]).should.deep.equal([createDeep(1, replacement)])
+    } finally {
+      src.reset()
+    }
+  })
 })
