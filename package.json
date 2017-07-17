@@ -9,8 +9,10 @@
     "lint": "standard",
     "coverage": "nyc npm t && npm run coverage-report",
     "coverage-report": "nyc report --reporter=lcov",
+    "doc": "esdoc -c doc.json",
     "test": "npm run build && _mocha --compilers js:babel-register",
     "prebuild": "rimraf dist",
+    "predoc": "rimraf docs",
     "build": "babel --copy-files --out-dir dist src",
     "travis": "npm run precommit",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -47,6 +49,7 @@
     "chai": "^4.0.2",
     "commitizen": "^2.8.2",
     "cz-conventional-changelog": "^2.0.0",
+    "esdoc": "^0.5.2",
     "mocha": "^3.4.1",
     "nyc": "^11.0.1",
     "rimraf": "^2.5.2",
