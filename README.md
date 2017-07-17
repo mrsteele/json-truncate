@@ -14,6 +14,12 @@ A way to truncate a json object. Useful for circular referenced objects.
 [![npm](https://img.shields.io/npm/l/json-truncate.svg?maxAge=0&style=flat)](https://raw.githubusercontent.com/mrsteele/json-truncate/master/LICENSE)
 [![Greenkeeper badge](https://badges.greenkeeper.io/mrsteele/json-truncate.svg)](https://greenkeeper.io/)
 
+## About
+
+If you need to write data to a file or output an object to an api endpoint that has circular references I recommend you give `json-trucnate` a try.
+
+By removing deeply nested data to maintain simple copies of the circular references you can keep most of the data you might be interested in.
+
 ## Install
 
 ```
@@ -24,13 +30,37 @@ npm install json-truncate --save
 
 Below are examples of how to use `json-truncate`
 
+#### Including
+
+You can include with regular node require:
+
 ```javascript
 JSON.truncate = require('json-truncate')
+```
 
-// Figure 1.0 - A basic example with default options.
-console.log(JSON.truncate(SomeDeepObject))
+or es6 import
 
-// Figure 1.1 - An example of configurable options.
+```javascript
+import JSONTruncate from 'json-truncate'
+```
+
+#### Usage
+
+**Figure 1.0** - A basic example with default options.
+
+```javascript
+JSON.truncate(SomeDeepObject)
+```
+
+**Figure 1.1** - An example of setting the `maxDepth` property.
+
+```javascript
+JSON.truncate(SomeDeepObject, 5)
+```
+
+**Figure 1.2** - An example of all configurable options.
+
+```javascript
 console.log(JSON.truncate({
   data: 'foo',
   level1: {
@@ -65,14 +95,10 @@ By default, there are two configurable variables to keep in mind when using `jso
 If you would you can configure these either individually with each request, or globally with the configuration function. The following example mimics figure 1.2 above.
 
 ```javascript
-JSON.truncate = require('json-truncate')
-
 JSON.truncate.configure({
   maxDepth: 2,
   replace: '[Truncated]'
 })
-
-console.log(JSON.truncate(SomeDeepObject))
 ```
 
 #### Arguments
