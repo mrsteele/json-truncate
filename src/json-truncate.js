@@ -6,7 +6,7 @@ const flatTypes = [String, Number, Boolean]
 
 const isDefined = val => val !== null && val !== undefined
 
-const isFlat = val => !isDefined(val) || flatTypes.indexOf(val.constructor) !== -1
+const isFlat = val => !isDefined(val) || ~flatTypes.indexOf(val.constructor)
 
 /**
  * Truncates variables.
