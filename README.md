@@ -16,7 +16,7 @@ A way to truncate a json object. Useful for circular referenced objects.
 
 ## About
 
-If you need to write data to a file or output an object to an api endpoint that has circular references I recommend you give `json-trucnate` a try.
+If you need to write data to a file or output an object to an api endpoint that has circular references I recommend you give `json-truncate` a try.
 
 By removing deeply nested data to maintain simple copies of the circular references you can keep most of the data you might be interested in.
 
