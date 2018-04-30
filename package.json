@@ -50,11 +50,11 @@
     "commitizen": "^2.8.2",
     "cz-conventional-changelog": "^2.0.0",
     "esdoc": "^1.0.1",
-    "mocha": "^4.0.0",
+    "mocha": "^5.0.0",
     "nyc": "^11.0.1",
     "rimraf": "^2.5.2",
-    "semantic-release": "^8.0.0",
-    "standard": "^10.0.2"
+    "semantic-release": "^15.0.0",
+    "standard": "^11.0.0"
   },
   "files": [
     "dist",
