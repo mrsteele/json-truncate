@@ -19,7 +19,7 @@ script:
   - npm run travis
 after_script:
   - codecov
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build -r $CODECLIMATE_REPO_TOKEN --exit-code $TRAVIS_TEST_RESULT
   - npm i -g semantic-release
   - semantic-release
 branches:
