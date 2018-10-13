@@ -10,24 +10,18 @@ node_js:
   - '7'
   - '6'
 before_install:
-  - npm i -g npm@^2.0.0
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
 install:
-  - npm i
-before_script:
-  - npm prune
+  - npm install
+  - npm install -g codecov
 script:
   - npm run travis
 after_script:
   - codecov
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-after_script:
-  - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.backend.json coverage/backend/.resultset.json
-  - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.frontend.json coverage/frontend/lcov.info
-  - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
-  - npm run semantic-release
+  - ./cc-test-reporter after-build -r $CODECLIMATE_REPO_TOKEN --exit-code $TRAVIS_TEST_RESULT
+  - npm i -g semantic-release
+  - semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
