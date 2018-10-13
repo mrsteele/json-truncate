@@ -20,7 +20,7 @@ before_script:
 script:
   - npm run travis
 after_script:
-  - codecov
+  - bash < (curl -s https://codecov.io/bash)
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 after_script:
   - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/frontend/lcov.info
