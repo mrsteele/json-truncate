@@ -51,12 +51,12 @@ describe('JSONtruncate', () => {
 
   it('should truncate arrays and nested objects with replacement string', () => {
     const replacement = '[replaced]'
-    src([createDeep(3, replacement)], {maxDepth: 2, replace: replacement}).should.deep.equal([createDeep(1, replacement)])
+    src([createDeep(3, replacement)], { maxDepth: 2, replace: replacement }).should.deep.equal([createDeep(1, replacement)])
   })
 
   it('should replace truncated values with undefined when replace prop is not a string', () => {
     const replacement = 3
-    src([createDeep(3)], {maxDepth: 2, replace: replacement}).should.deep.equal([createDeep(1, replacement)])
+    src([createDeep(3)], { maxDepth: 2, replace: replacement }).should.deep.equal([createDeep(1, replacement)])
   })
 
   it('should return flat objects', () => {
