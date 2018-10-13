@@ -10,22 +10,17 @@ node_js:
   - '7'
   - '6'
 before_install:
-  - npm i -g npm@^2.0.0
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
 install:
   - npm i
-before_script:
-  - npm prune
 script:
   - npm run travis
 after_script:
-  - pwd
   - bash < (curl -s https://codecov.io/bash)
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-after_script:
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
-  - npm run semantic-release
+  - npm i -g semantic-release
+  - semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
