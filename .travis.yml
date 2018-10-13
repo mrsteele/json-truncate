@@ -23,9 +23,8 @@ after_script:
   - codecov
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 after_script:
-  - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.backend.json coverage/backend/.resultset.json
-  - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.frontend.json coverage/frontend/lcov.info
-  - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
+  - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/frontend/lcov.info
+  - ./cc-test-reporter sum-coverage coverage/codeclimate.json -p 2
   - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
   - npm run semantic-release
 branches:
