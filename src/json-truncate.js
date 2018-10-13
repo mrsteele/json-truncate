@@ -18,7 +18,7 @@ const isFlat = val => !isDefined(val) || flatTypes.indexOf(val.constructor) !== 
  * @returns {Object} The truncated object.
  */
 const truncate = (obj, options = {}, curDepth = 0) => {
-  options = isNaN(options) ? options : {maxDepth: options}
+  options = isNaN(options) ? options : { maxDepth: options }
   options.maxDepth = options.maxDepth || maxDepth
   options.replace = options.replace || replace
 
