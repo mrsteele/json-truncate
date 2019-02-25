@@ -49,7 +49,7 @@
     "commitizen": "^3.0.0",
     "cz-conventional-changelog": "^2.0.0",
     "esdoc": "^1.0.1",
-    "mocha": "^5.0.0",
+    "mocha": "^6.0.2",
     "nyc": "^12.0.1",
     "rimraf": "^2.5.2",
     "standard": "^12.0.0"
