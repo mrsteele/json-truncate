@@ -47,7 +47,7 @@
     "babel-register": "^6.9.0",
     "chai": "^4.0.2",
     "commitizen": "^4.0.0",
-    "cz-conventional-changelog": "^2.0.0",
+    "cz-conventional-changelog": "^3.0.0",
     "esdoc": "^1.0.1",
     "mocha": "^5.0.0",
     "nyc": "^14.1.0",
