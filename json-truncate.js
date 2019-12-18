@@ -1,3 +1,5 @@
+'use strict'
+
 // configurables
 let maxDepth
 let replace
@@ -74,4 +76,4 @@ truncate.reset = () => {
 
 truncate.reset()
 
-export default truncate
+module.exports = truncate

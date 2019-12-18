@@ -1,6 +1,6 @@
 /* global describe, it */
-import chai from 'chai'
-import src from '../src/json-truncate'
+const chai = require('chai')
+const src = require('../json-truncate')
 
 const expect = chai.expect
 chai.should()
