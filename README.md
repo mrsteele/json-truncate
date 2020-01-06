@@ -38,12 +38,6 @@ You can include with regular node require:
 JSON.truncate = require('json-truncate')
 ```
 
-or es6 import
-
-```javascript
-import JSONTruncate from 'json-truncate'
-```
-
 #### Usage
 
 **Figure 1.0** - A basic example with default options.
