@@ -19,9 +19,6 @@ docs
 # node-waf configuration
 .lock-wscript
 
-# Distribution / Build directory
-dist/
-
 # Dependency directory
 node_modules
 
