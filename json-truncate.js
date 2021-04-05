@@ -31,7 +31,7 @@ const truncate = (obj, options = {}, curDepth = 0) => {
       return obj
     } else if (Array.isArray(obj)) {
       const newArr = []
-      obj.map(value => {
+      obj.forEach(value => {
         if (isFlat(value)) {
           newArr.push(value)
         } else {
