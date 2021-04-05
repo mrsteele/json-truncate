@@ -5,8 +5,6 @@
   "main": "json-truncate.js",
   "scripts": {
     "lint": "standard",
-    "coverage": "nyc npm t && npm run coverage-report",
-    "coverage-report": "nyc report --reporter=lcov",
     "test": "mocha",
     "doc": "jsdoc json-truncate.js -d docs",
     "predoc": "rimraf docs"
@@ -45,7 +43,6 @@
     "chai": "^4.0.2",
     "jsdoc": "^3.6.3",
     "mocha": "^8.3.2",
-    "nyc": "^15.1.0",
     "rimraf": "^3.0.0",
     "standard": "^16.0.3"
   },
