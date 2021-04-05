@@ -4,13 +4,10 @@
   "description": "A way to truncate a json object.",
   "main": "json-truncate.js",
   "scripts": {
-    "precommit": "npm run lint && npm run coverage",
-    "commit": "git-cz",
     "lint": "standard",
     "coverage": "nyc npm t && npm run coverage-report",
     "coverage-report": "nyc report --reporter=lcov",
     "test": "mocha",
-    "prebuild": "rimraf dist",
     "doc": "jsdoc json-truncate.js -d docs",
     "predoc": "rimraf docs",
     "travis": "npm run precommit"
@@ -47,8 +44,6 @@
   "homepage": "https://github.com/mrsteele/json-truncate#readme",
   "devDependencies": {
     "chai": "^4.0.2",
-    "commitizen": "^4.0.0",
-    "cz-conventional-changelog": "^3.0.0",
     "jsdoc": "^3.6.3",
     "mocha": "^8.3.2",
     "nyc": "^15.1.0",
