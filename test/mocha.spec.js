@@ -60,7 +60,7 @@ describe('JSONtruncate', () => {
   })
 
   it('should return flat objects', () => {
-    ;[5, true, false, 'hello'].map(val => {
+    ;[5, true, false, 'hello'].forEach(val => {
       src(val, 5).should.equal(val)
     })
   })
