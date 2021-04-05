@@ -87,7 +87,7 @@ jobs:
         with:
           node-version: 12
       - name: Build
-        run: npm i && npm run build
+        run: npm i
       - name: 🚀 Release
         uses: cycjimmy/semantic-release-action@v2
         with:
