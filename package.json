@@ -9,8 +9,7 @@
     "coverage-report": "nyc report --reporter=lcov",
     "test": "mocha",
     "doc": "jsdoc json-truncate.js -d docs",
-    "predoc": "rimraf docs",
-    "travis": "npm run precommit"
+    "predoc": "rimraf docs"
   },
   "engines": {
     "node": ">=6.0.0"
